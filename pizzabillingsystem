@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class PizzaBillingSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int bill = 0; // to store final bill amount
+
+        // Asking pizza size
+        System.out.print("Enter pizza size (small/medium/large): ");
+        String size = sc.nextLine().toLowerCase(); // convert input to lowercase for consistency
+
+        // Using switch to assign base price
+        switch (size) {
+            case "small":
+                bill += 100;
+                break;
+            case "medium":
+                bill += 200;
+                break;
+            case "large":
+                bill += 300;
+                break;
+            default:
+                System.out.println("Invalid size entered!");
+                return; // exit program if wrong size
+        }
+
+        // Asking for pepperoni
+        System.out.print("Do you want pepperoni? (yes/no): ");
+        String pepperoni = sc.nextLine().toLowerCase();
+
+        if (pepperoni.equals("yes")) {
+            if (size.equals("small")) {
+                bill += 30;
+            } else { // medium or large
+                bill += 50;
+            }
+        }
+
+        // Asking for extra cheese
+        System.out.print("Do you want extra cheese? (yes/no): ");
+        String cheese = sc.nextLine().toLowerCase();
+
+        if (cheese.equals("yes")) {
+            bill += 20;
+        }
+
+        // Final output
+        System.out.println("Your final bill is: " + bill + " rupees");
+    }
+}
